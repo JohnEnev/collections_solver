@@ -4,4 +4,19 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+  "typer>=0.12",
+  "pandas>=2.2",
+  "pydantic>=2.7",
+  "scikit-learn>=1.5",
+  "numpy>=1.26",
+  "rich>=13.7",
+  "litellm>=1.43",          # multi-provider LLM client
+  "tenacity>=8.3",
+  "python-dotenv>=1.0",
+  "tqdm>=4.66",
+  "orjson>=3.10"
+]
+
+[tool.typer]
+pretty_exceptions_show_locals = false
