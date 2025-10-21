@@ -6,6 +6,7 @@ from src.models.embeddings import embed_words
 from src.models.clustering import kmeans_groups
 from src.cli.evaluate import evaluate_predictions  # reuse evaluator
 
+
 app = typer.Typer()
 
 def read_jsonl(p): 
