@@ -114,5 +114,5 @@ MIT
 ## Acknowledgments
 
 - Training data generated using Claude Sonnet 4.5 (Anthropic)
-- Puzzle data from NYT Connections
+- Puzzle data from NYT Connections (thanks to Eric Nunes) at [Kaggle](https://www.kaggle.com/datasets/eric27n/the-new-york-times-connections/data)
 - Fine-tuning accelerated by [Unsloth](https://github.com/unslothai/unsloth)
