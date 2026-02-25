@@ -1,0 +1,91 @@
+{
+  "test_set": {
+    "description": "Last 150 puzzles (temporal split)",
+    "puzzle_ids": "807-975",
+    "count": 150
+  },
+  "models": {
+    "base_qwen_14b": {
+      "description": "Qwen 2.5 14B Instruct (4-bit), no fine-tuning",
+      "solve_rate": 0.093,
+      "avg_groups": 0.75,
+      "avg_mistakes": 3.4,
+      "valid_outputs": 0.998
+    },
+    "gpt4o_mini": {
+      "description": "OpenAI GPT-4o-mini API",
+      "solve_rate": 0.100,
+      "avg_groups": 0.78,
+      "avg_mistakes": 3.0,
+      "valid_outputs": 1.000
+    },
+    "claude_haiku_3_5": {
+      "description": "Anthropic Claude Haiku 3.5 API",
+      "solve_rate": 0.133,
+      "avg_groups": 1.07,
+      "avg_mistakes": 3.1,
+      "valid_outputs": 0.967
+    },
+    "gpt4o": {
+      "description": "OpenAI GPT-4o API",
+      "solve_rate": 0.227,
+      "avg_groups": 1.49,
+      "avg_mistakes": 3.1,
+      "valid_outputs": 1.000
+    },
+    "alpha": {
+      "description": "Fine-tuned on 358 golden traces, 3 epochs",
+      "training_data": "358 golden traces (one-shot Sonnet reasoning)",
+      "epochs": 3,
+      "lora_rank": 32,
+      "solve_rate": 0.273,
+      "avg_groups": 1.75,
+      "avg_mistakes": 3.2,
+      "valid_outputs": 0.975
+    },
+    "beta": {
+      "description": "Fine-tuned on golden + game traces, 2.5 epochs",
+      "training_data": "358 golden + 150 game traces",
+      "epochs": 2.5,
+      "lora_rank": 32,
+      "solve_rate": 0.300,
+      "avg_groups": 1.91,
+      "avg_mistakes": 3.2,
+      "valid_outputs": 0.985
+    },
+    "claude_sonnet_4_5": {
+      "description": "Anthropic Claude Sonnet 4.5 API (teacher model)",
+      "solve_rate": 0.873,
+      "avg_groups": 3.61,
+      "avg_mistakes": 0.9,
+      "valid_outputs": 1.000
+    }
+  },
+  "one_away_analysis": {
+    "alpha": {
+      "total_situations": 228,
+      "recovered": 49,
+      "recovery_rate": 0.215
+    },
+    "beta": {
+      "total_situations": 257,
+      "recovered": 46,
+      "recovery_rate": 0.179
+    }
+  },
+  "training_config": {
+    "base_model": "unsloth/Qwen2.5-14B-Instruct",
+    "quantization": "4-bit",
+    "lora_rank": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0.05,
+    "learning_rate": 2e-4,
+    "batch_size": 2,
+    "gradient_accumulation": 4,
+    "effective_batch_size": 8,
+    "max_seq_length": 2048,
+    "optimizer": "adamw_8bit",
+    "hardware": "NVIDIA A100 80GB",
+    "training_time_per_model": "~20 minutes"
+  }
+}
